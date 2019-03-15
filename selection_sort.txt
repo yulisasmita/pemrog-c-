@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main(int argc, char **argv)
+{
+	int data[5]={5,2,6,4,1},banyak_data,key,i,j,tampung;
+	banyak_data=5;
+	for(i=0;i<=banyak_data-2;i++)
+	{
+		key=i;
+		for(j=i+1;j<=banyak_data-1;j++)
+		{
+			if(data[key]>data[j])
+			{
+				key=j;
+			}
+		}
+		tampung=data[key];
+		data[key]=data[i];
+		data[i]=tampung;
+	}
+	for(i=0;i<banyak_data;i++)
+	{
+		cout<<data[i]<<"   ";
+	}
+	
+	
+	return 0;
+}
