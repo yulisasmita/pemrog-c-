@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+void quick(int data[],int awal,int akhir)
+{
+	int lo,hi,tampung,key;
+	if(awal<akhir)
+	{
+		lo=awal;
+		hi=akhir;
+		key=awal;
+		do{
+			while(data[lo]<=data[key]&&lo<hi)
+			{
+				lo++;
+			}
+			while (data[hi]>data[key])
+			{
+				hi--;
+			}
+			if(lo<hi)
+			{
+				tampung=data[hi];
+				data[hi]=data[lo];
+				data[lo]=tampung;
+			}
+		}while (lo<hi);
+		tampung=data[hi];
+		data[hi]=data[key];
+		data[key]=tampung;
+		key=hi;
+		quick(data,awal,key-1);
+		quick(data,key+1,akhir);
+				
+	}		
+				
+				
+}
+int main(int argc, char **argv)
+{
+	int data[8]={6,5,3,1,8,7,2,4},banyak_data=8,awal=0,i;
+	quick(data,awal,banyak_data-1);
+	for(i=0;i<banyak_data;i++)
+	{
+		cout<<data[i]<<"   ";
+	}
+	return 0;
+}
