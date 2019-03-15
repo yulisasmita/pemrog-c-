@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+int main(int argc, char **argv)
+{
+	int banyak_data,tampung,bagi,i,j;
+	
+	std::cout << "masukkan  jumlah data: ";
+	std::cin >> banyak_data;
+	
+	int data[banyak_data];
+	
+	srand(time(NULL));
+	for(i=0;i<banyak_data;i++)
+	{
+		data[i]=rand()%100;
+	}
+	
+	std::cout << "\ndata:";
+	for(i=0;i<banyak_data;i++)
+	{
+		std::cout << data[i] << " ";
+	}
+
+	bagi=banyak_data/2;
+	
+	do{
+		for(i=bagi;i<banyak_data;i++)
+		{
+			tampung=data[i];
+			j=i-bagi;
+			while(j>=0 && data[j]>tampung)
+			{
+				data[j+bagi]=data[j];
+				j=j-bagi;
+			}
+			data[j+bagi]=tampung;
+		}
+		bagi=bagi/2;
+	}while (bagi>0);
+	std::cout << "\ndata:";
+	for(i=0;i<banyak_data;i++)
+	{
+		std::cout << data[i] << " ";
+	}
+return 0;
+}
